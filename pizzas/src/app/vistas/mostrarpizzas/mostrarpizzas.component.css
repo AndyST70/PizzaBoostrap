@@ -37,3 +37,16 @@ mat-divider {
 table {
   width: 100%;
 }
+
+.filter-field{
+  width: 30%;
+  margin-bottom:1px;
+
+}
+
+
+.filter-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 16px;
+}
