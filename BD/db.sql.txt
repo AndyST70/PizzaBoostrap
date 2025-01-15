@@ -1,0 +1,76 @@
+SET search_path TO bd_pruebas;
+
+CREATE TABLE cliente(
+	id SERIAL PRIMARY KEY,
+	nombre VARCHAR(100) NOT NULL,
+	apellido VARCHAR(100) NOT NULL,
+	telefono VARCHAR(15) NOT NULL,
+	email VARCHAR(150) NOT NULL,
+	direccion VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE pizza(
+	id SERIAL PRIMARY KEY,
+	nombre VARCHAR(100) NOT NULL,
+	descripcion text,
+	precio NUMERIC(10,2) NOT NULL
+);
+
+CREATE TABLE compra (
+    id SERIAL PRIMARY KEY,
+    clienteid INT NOT NULL,
+    total NUMERIC(10, 2) NOT NULL,
+    fecha DATE DEFAULT CURRENT_DATE,
+    CONSTRAINT fk_cliente_compra FOREIGN KEY (clienteid) REFERENCES cliente (id) ON DELETE CASCADE
+);
+
+CREATE TABLE pedido(
+	id SERIAL PRIMARY KEY,
+	clienteid INT NOT NULL,
+	pizzaid INT NOT NULL,
+	cantidad INT NOT NULL,
+	fecha DATE,
+	CONSTRAINT fk_cliente FOREIGN KEY(clienteid) REFERENCES cliente(id) ON DELETE CASCADE, 
+	CONSTRAINT fk_pizzas FOREIGN KEY(pizzaid) REFERENCES pizza(id) ON DELETE CASCADE
+);
+
+Delete FROM cliente WHERE id= 16;
+Delete FROM cliente WHERE id= 4;
+Delete FROM cliente WHERE id= 3;
+Delete FROM cliente WHERE id= 15;
+
+
+SELECT * FROM cliente;
+
+
+SELECT 
+	c.nombre,
+	p.nombre,
+	co.total,
+	(p.precio * pe.cantidad - co.total) as Pago_Pendiente
+FROM 
+	clientes c
+JOIN 
+	pedidos pe ON c.id = pe.cliente_id
+JOIN 
+	pizzas p ON pe.pizza_id = p.id
+JOIN 
+	compras co ON p.id = co.cliente_id
+ORDER BY 
+	c.nombre, p.nombre;
+
+
+
+INSERT INTO cliente (nombre, apellido, telefono, email, direccion) VALUES
+('Juan', 'Pérez', '555-1234', 'juan.perez@example.com', 'Calle Falsa 123'),
+('Ana', 'Gómez', '555-5678', 'ana.gomez@example.com', 'Av. Siempreviva 742');
+
+
+INSERT INTO pizza (nombre, descripcion, precio) VALUES
+('Margarita', 'Pizza con tomate, mozzarella y albahaca fresca', 8.50),
+('Pepperoni', 'Pizza con pepperoni y extra mozzarella', 10.00),
+('Hawaiana', 'Pizza con jamón y piña', 9.00),
+('Cuatro Quesos', 'Pizza con mozzarella, gorgonzola, parmesano y ricotta', 11.50),
+('Vegetariana', 'Pizza con verduras frescas, champiñones y aceitunas', 8.00);
+
+

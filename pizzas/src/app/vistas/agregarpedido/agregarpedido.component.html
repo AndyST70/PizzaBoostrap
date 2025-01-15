@@ -1,0 +1,32 @@
+<div class="container">
+  <h1>Agregar Pedidos</h1>
+  <mat-divider></mat-divider>
+  <br><br>
+
+
+  <form [formGroup]="clienteForm" (ngSubmit)="onSubmitAPedido()" class="form-container">
+
+    <div class="form-row">
+      <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Cliente</mat-label>
+        <input matInput formControlName="clienteid" type="number" required />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Pizza</mat-label>
+        <input matInput formControlName="pizzaid" type="number" required />
+      </mat-form-field>
+    </div>
+
+    <div class="form-row">
+      <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Cantidad</mat-label>
+        <input matInput formControlName="cantidad" type="number" required />
+      </mat-form-field>
+    </div>
+
+    <button mat-raised-button color="primary" type="submit" class="submit-button">
+      Agregar Pedido
+    </button>
+  </form>
+</div>

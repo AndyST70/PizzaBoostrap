@@ -1,0 +1,39 @@
+.container {
+  max-width: 60%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+h1 {
+  margin-bottom: 16px;
+}
+
+mat-divider {
+  margin-bottom: 18;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-field {
+  width: 100%;
+}
+
+.submit-button {
+  align-self: center;
+  margin-top: 16px;
+  width: 25%;
+}
+
+
+.form-row {
+  display: flex;
+  gap: 16px;
+}
+
+table {
+  width: 100%;
+}

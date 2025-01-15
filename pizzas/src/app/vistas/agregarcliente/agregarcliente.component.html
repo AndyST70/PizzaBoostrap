@@ -1,0 +1,41 @@
+<div class="container">
+  <h1>Mostrar Pedidos</h1>
+  <mat-divider></mat-divider>
+  <br><br>
+
+  <form [formGroup]="clienteForm" (ngSubmit)="onSubmitCliente()" class="form-container">
+
+    <div class="form-row">
+      <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Nombre</mat-label>
+        <input matInput formControlName="nombre" type="text" required />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Apellido</mat-label>
+        <input matInput formControlName="apellido" type="text" required />
+      </mat-form-field>
+    </div>
+
+    <div class="form-row">
+      <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Teléfono</mat-label>
+        <input matInput formControlName="telefono" type="text" required />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" type="email" required />
+      </mat-form-field>
+    </div>
+
+    <mat-form-field appearance="fill" class="form-field">
+      <mat-label>Dirección</mat-label>
+      <textarea matInput formControlName="direccion" required></textarea>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit" class="submit-button">
+      Agregar Cliente
+    </button>
+  </form>
+</div>

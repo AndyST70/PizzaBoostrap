@@ -1,0 +1,17 @@
+<div class="container">
+  <h1>Lista de Pizzas</h1>
+  <mat-divider></mat-divider>
+  <br />
+
+  <div class="card-container">
+    <!-- Lista Pizzas  -->
+     <app-tarjeta
+        *ngFor="let pizza of pizzas"
+        [titulo] = "pizza.nombre"
+        [contenido] = "pizza.descripcion"
+        [etiqueta]  = "'Precio: ' + ' Q' + pizza.precio   "
+        >
+     </app-tarjeta>
+  </div>
+
+</div>
